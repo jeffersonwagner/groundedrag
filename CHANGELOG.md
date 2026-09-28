@@ -6,7 +6,7 @@ project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-09-20
+## [0.1.0] - 2026-09-28
 
 First tagged release: the core library, CLI, and packaging are usable
 end to end.
