@@ -2,7 +2,7 @@
 
 ## Context
 
-"How much does rag-gate reduce hallucination?" is the natural question for
+"How much does groundedrag reduce hallucination?" is the natural question for
 a benchmark to answer, but "hallucination" isn't a binary a script can
 check — scoring it well would need either human review or an LLM-as-judge,
 both of which introduce their own bias and cost, and neither of which
@@ -16,7 +16,7 @@ fraction of the time does each pipeline produce an answer instead of
 refusing? A pipeline without a gate has no refusal path — it retrieves
 whatever is closest in its index, however unrelated, and generates from it
 unconditionally, so its answer rate on out-of-scope questions is 100% by
-construction. rag-gate's coverage check happens before the LLM is ever
+construction. groundedrag's coverage check happens before the LLM is ever
 called, so its answer rate on the same questions is 0% whenever the gate
 is implemented correctly — `tests/test_benchmark.py` asserts exactly that,
 making the number itself a regression check, not just a demo.
@@ -51,7 +51,7 @@ a community to help build and maintain one.
 
 ## What would invalidate this
 
-If rag-gate's scope grows to include claims about answer *quality* (e.g.,
+If groundedrag's scope grows to include claims about answer *quality* (e.g.,
 "citations reduce factual error rate by X%"), that would need its own
 benchmark with its own methodology — this ADR only covers the refusal-gap
 claim the project currently makes.

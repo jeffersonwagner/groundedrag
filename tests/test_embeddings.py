@@ -6,8 +6,8 @@ from types import SimpleNamespace
 
 import pytest
 
-from rag_gate.embeddings.openai import OpenAIEmbedder
-from rag_gate.embeddings.sentence_transformers import SentenceTransformersEmbedder
+from groundedrag.embeddings.openai import OpenAIEmbedder
+from groundedrag.embeddings.sentence_transformers import SentenceTransformersEmbedder
 
 
 def test_openai_embedder(monkeypatch):
@@ -38,5 +38,5 @@ def test_openai_embedder(monkeypatch):
 def test_sentence_transformers_embedder_missing_dependency(monkeypatch):
     monkeypatch.setitem(__import__("sys").modules, "sentence_transformers", None)
     embedder = SentenceTransformersEmbedder()
-    with pytest.raises(ImportError, match="rag-gate\\[sentence-transformers\\]"):
+    with pytest.raises(ImportError, match="groundedrag\\[sentence-transformers\\]"):
         embedder.embed(["hello"])

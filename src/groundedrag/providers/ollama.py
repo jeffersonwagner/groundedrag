@@ -22,7 +22,7 @@ class OllamaProvider:
             except ImportError as exc:
                 raise ImportError(
                     "OllamaProvider requires the 'ollama' package. "
-                    "Install it with: pip install rag-gate[ollama]"
+                    "Install it with: pip install groundedrag[ollama]"
                 ) from exc
             self._client = ollama.Client(host=self.host)
         return self._client

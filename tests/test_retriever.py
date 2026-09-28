@@ -1,11 +1,11 @@
 """Tests for GatedRetriever — the core guarantee end to end: no coverage,
 no query, no chunks, ever."""
 
-from rag_gate.coverage import CoverageMap
-from rag_gate.gate import DocumentGate
-from rag_gate.retriever import GatedRetriever
-from rag_gate.schemas import Chunk
-from rag_gate.stores.memory import InMemoryStore
+from groundedrag.coverage import CoverageMap
+from groundedrag.gate import DocumentGate
+from groundedrag.retriever import GatedRetriever
+from groundedrag.schemas import Chunk
+from groundedrag.stores.memory import InMemoryStore
 
 
 class FakeEmbedder:

@@ -26,7 +26,7 @@ overtime):
 - **Naive** — no gate. It has no way to know a question falls outside its
   documentation, so it runs an unfiltered similarity search, gets back the
   closest chunk it has (however unrelated), and generates from it anyway.
-- **rag-gate** — the gate checks coverage for the question's topic first.
+- **groundedrag** — the gate checks coverage for the question's topic first.
   With no document mapped to that topic, it refuses before the LLM is
   ever called.
 
@@ -35,13 +35,13 @@ overtime):
 | Pipeline | Answer rate on out-of-scope questions |
 |---|---:|
 | Naive (no gate) | 100% |
-| rag-gate | 0% |
+| groundedrag | 0% |
 
 The naive rate is 100% *by construction* — a pipeline with no concept of
 "coverage" has no refusal path at all, so it always attempts an answer.
 That is exactly the point: the gap this benchmark makes visible isn't a
 subtle accuracy difference, it's a structural one. See
-[`tests/test_benchmark.py`](https://github.com/jeffersonwagner/rag-gate/blob/main/tests/test_benchmark.py)
+[`tests/test_benchmark.py`](https://github.com/jeffersonwagner/groundedrag/blob/main/tests/test_benchmark.py)
 for the automated
 check that keeps this table honest, and
 [`docs/adr/0005`](adr/0005-hallucination-benchmark-methodology.md) for why

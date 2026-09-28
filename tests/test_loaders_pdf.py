@@ -8,8 +8,8 @@ Tesseract/Poppler system binaries either.
 
 from fpdf import FPDF
 
-from rag_gate.loaders import pdf as pdf_loader
-from rag_gate.loaders.pdf import load_pdf
+from groundedrag.loaders import pdf as pdf_loader
+from groundedrag.loaders.pdf import load_pdf
 
 
 def _make_pdf(path, text: str) -> None:

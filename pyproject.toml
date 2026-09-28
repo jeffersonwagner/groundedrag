@@ -1,5 +1,5 @@
 [project]
-name = "rag-gate"
+name = "groundedrag"
 version = "0.1.0"
 description = "A hard documentary gate and citation verifier for RAG pipelines — stops the LLM from answering without evidence."
 readme = "README.md"
@@ -40,18 +40,18 @@ dev = [
 ]
 
 [project.scripts]
-rag-gate = "rag_gate.cli:app"
+groundedrag = "groundedrag.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/jeffersonwagner/rag-gate"
-Issues = "https://github.com/jeffersonwagner/rag-gate/issues"
+Homepage = "https://github.com/jeffersonwagner/groundedrag"
+Issues = "https://github.com/jeffersonwagner/groundedrag/issues"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rag_gate"]
+packages = ["src/groundedrag"]
 
 [tool.ruff]
 line-length = 100
@@ -70,5 +70,5 @@ testpaths = ["tests"]
 # syntax rules, hard syntax-erroring on numpy's PEP 695 `type` statement.
 # Leaving it unset makes mypy default to the interpreter actually running
 # it, which always matches whatever numpy version was resolved for it.
-packages = ["rag_gate"]
+packages = ["groundedrag"]
 ignore_missing_imports = true

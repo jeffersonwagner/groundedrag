@@ -8,8 +8,8 @@ API.
 
 from typer.testing import CliRunner
 
-from rag_gate import cli
-from rag_gate.cli import app
+from groundedrag import cli
+from groundedrag.cli import app
 
 runner = CliRunner()
 

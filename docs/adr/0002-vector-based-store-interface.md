@@ -34,7 +34,7 @@ gate understands.
   Chroma, sentence-transformers) imports its vendor SDK lazily, inside the
   method that needs it, and raises a clear `ImportError` naming the extra
   to install rather than failing at package import time. This is what lets
-  `import rag_gate` stay light regardless of which extras are installed.
+  `import groundedrag` stay light regardless of which extras are installed.
 - Default CI installs `anthropic`, `openai`, `ollama`, `chroma`, and `pdf`,
   but not `sentence-transformers`, `pgvector`, or `qdrant`: the first group
   is fast to install and is exercised by tests (mocked SDK clients for the

@@ -1,8 +1,8 @@
-site_name: rag-gate
+site_name: groundedrag
 site_description: A hard documentary gate and citation verifier for RAG pipelines.
-site_url: https://jeffersonwagner.github.io/rag-gate/
-repo_url: https://github.com/jeffersonwagner/rag-gate
-repo_name: jeffersonwagner/rag-gate
+site_url: https://jeffersonwagner.github.io/groundedrag/
+repo_url: https://github.com/jeffersonwagner/groundedrag
+repo_name: jeffersonwagner/groundedrag
 
 theme:
   name: material
@@ -34,6 +34,7 @@ nav:
       - "0004 — Anthropic temperature via extra_body": adr/0004-anthropic-temperature-via-extra-body.md
       - "0005 — Hallucination benchmark methodology": adr/0005-hallucination-benchmark-methodology.md
       - "0006 — mypy python_version matrix mismatch": adr/0006-mypy-python-version-matrix-mismatch.md
+      - "0007 — Renamed to groundedrag": adr/0007-renamed-to-groundedrag.md
 
 markdown_extensions:
   - admonition

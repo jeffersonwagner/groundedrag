@@ -11,6 +11,13 @@ project uses [Semantic Versioning](https://semver.org/).
 First tagged release: the core library, CLI, and packaging are usable
 end to end.
 
+### Changed
+
+- Renamed the project from `rag-gate` to `groundedrag`: PyPI rejected the
+  original name as too similar to an existing, thematically adjacent
+  package (`raggate`, a CI evaluation gate for RAG systems). See
+  [ADR-0007](docs/adr/0007-renamed-to-groundedrag.md).
+
 ### Added
 
 - `DocumentGate` + `CoverageMap`: a hard, auditable gate that refuses to
@@ -25,7 +32,7 @@ end to end.
   plus text and PDF (with automatic OCR fallback) loaders.
 - `HashingEmbedder`: a dependency-free, deterministic embedder so the CLI
   and examples work with no API key, GPU, or network access.
-- CLI: `rag-gate init|ingest|ask|doctor`.
+- CLI: `groundedrag init|ingest|ask|doctor`.
 - Two runnable examples (`examples/helpdesk_bot`, `examples/compliance_qa`).
 - A hallucination-rate benchmark (`scripts/benchmark.py`) measuring the
   answer-rate gap on out-of-scope questions, with docs in

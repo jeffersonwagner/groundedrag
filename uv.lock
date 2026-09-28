@@ -1077,6 +1077,92 @@ wheels = [
 ]
 
 [[package]]
+name = "groundedrag"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "pydantic" },
+    { name = "pyyaml" },
+    { name = "typer" },
+]
+
+[package.optional-dependencies]
+anthropic = [
+    { name = "anthropic" },
+]
+api = [
+    { name = "fastapi" },
+    { name = "uvicorn" },
+]
+chroma = [
+    { name = "chromadb" },
+]
+dev = [
+    { name = "fpdf2" },
+    { name = "mypy" },
+    { name = "pytest" },
+    { name = "pytest-cov" },
+    { name = "ruff" },
+    { name = "types-pyyaml" },
+]
+docs = [
+    { name = "mkdocs-material" },
+]
+ocr = [
+    { name = "pdf2image" },
+    { name = "pillow" },
+    { name = "pytesseract" },
+]
+ollama = [
+    { name = "ollama" },
+]
+openai = [
+    { name = "openai" },
+]
+pdf = [
+    { name = "pypdf" },
+]
+pgvector = [
+    { name = "pgvector" },
+    { name = "psycopg", extra = ["binary"] },
+]
+qdrant = [
+    { name = "qdrant-client" },
+]
+sentence-transformers = [
+    { name = "sentence-transformers" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "anthropic", marker = "extra == 'anthropic'", specifier = ">=0.40" },
+    { name = "chromadb", marker = "extra == 'chroma'", specifier = ">=0.5" },
+    { name = "fastapi", marker = "extra == 'api'", specifier = ">=0.115" },
+    { name = "fpdf2", marker = "extra == 'dev'", specifier = ">=2.7" },
+    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.5" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.13" },
+    { name = "ollama", marker = "extra == 'ollama'", specifier = ">=0.4" },
+    { name = "openai", marker = "extra == 'openai'", specifier = ">=1.50" },
+    { name = "pdf2image", marker = "extra == 'ocr'", specifier = ">=1.17" },
+    { name = "pgvector", marker = "extra == 'pgvector'", specifier = ">=0.3" },
+    { name = "pillow", marker = "extra == 'ocr'", specifier = ">=10.0" },
+    { name = "psycopg", extras = ["binary"], marker = "extra == 'pgvector'", specifier = ">=3.2" },
+    { name = "pydantic", specifier = ">=2.6" },
+    { name = "pypdf", marker = "extra == 'pdf'", specifier = ">=5.0" },
+    { name = "pytesseract", marker = "extra == 'ocr'", specifier = ">=0.3" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5.0" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "qdrant-client", marker = "extra == 'qdrant'", specifier = ">=1.11" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.7" },
+    { name = "sentence-transformers", marker = "extra == 'sentence-transformers'", specifier = ">=3.0" },
+    { name = "typer", specifier = ">=0.13" },
+    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0" },
+    { name = "uvicorn", marker = "extra == 'api'", specifier = ">=0.30" },
+]
+provides-extras = ["anthropic", "openai", "ollama", "chroma", "pgvector", "qdrant", "sentence-transformers", "pdf", "ocr", "api", "docs", "dev"]
+
+[[package]]
 name = "grpcio"
 version = "1.84.0"
 source = { registry = "https://pypi.org/simple" }
@@ -3685,92 +3771,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/4e/20/c8fcd645d3f595b08
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d0/9f/becebdda02beddd422587eba0d7dfac5b1f1e0aa1ada5bcf9b9e6f1c3717/qdrant_client-1.19.1-py3-none-any.whl", hash = "sha256:fca1a96c3f90f5fff853f6ee6877838a5768a04c963df9891a655a63313af8a0", size = 406533, upload-time = "2026-09-16T06:43:12.428Z" },
 ]
-
-[[package]]
-name = "rag-gate"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "pydantic" },
-    { name = "pyyaml" },
-    { name = "typer" },
-]
-
-[package.optional-dependencies]
-anthropic = [
-    { name = "anthropic" },
-]
-api = [
-    { name = "fastapi" },
-    { name = "uvicorn" },
-]
-chroma = [
-    { name = "chromadb" },
-]
-dev = [
-    { name = "fpdf2" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-cov" },
-    { name = "ruff" },
-    { name = "types-pyyaml" },
-]
-docs = [
-    { name = "mkdocs-material" },
-]
-ocr = [
-    { name = "pdf2image" },
-    { name = "pillow" },
-    { name = "pytesseract" },
-]
-ollama = [
-    { name = "ollama" },
-]
-openai = [
-    { name = "openai" },
-]
-pdf = [
-    { name = "pypdf" },
-]
-pgvector = [
-    { name = "pgvector" },
-    { name = "psycopg", extra = ["binary"] },
-]
-qdrant = [
-    { name = "qdrant-client" },
-]
-sentence-transformers = [
-    { name = "sentence-transformers" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "anthropic", marker = "extra == 'anthropic'", specifier = ">=0.40" },
-    { name = "chromadb", marker = "extra == 'chroma'", specifier = ">=0.5" },
-    { name = "fastapi", marker = "extra == 'api'", specifier = ">=0.115" },
-    { name = "fpdf2", marker = "extra == 'dev'", specifier = ">=2.7" },
-    { name = "mkdocs-material", marker = "extra == 'docs'", specifier = ">=9.5" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.13" },
-    { name = "ollama", marker = "extra == 'ollama'", specifier = ">=0.4" },
-    { name = "openai", marker = "extra == 'openai'", specifier = ">=1.50" },
-    { name = "pdf2image", marker = "extra == 'ocr'", specifier = ">=1.17" },
-    { name = "pgvector", marker = "extra == 'pgvector'", specifier = ">=0.3" },
-    { name = "pillow", marker = "extra == 'ocr'", specifier = ">=10.0" },
-    { name = "psycopg", extras = ["binary"], marker = "extra == 'pgvector'", specifier = ">=3.2" },
-    { name = "pydantic", specifier = ">=2.6" },
-    { name = "pypdf", marker = "extra == 'pdf'", specifier = ">=5.0" },
-    { name = "pytesseract", marker = "extra == 'ocr'", specifier = ">=0.3" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=5.0" },
-    { name = "pyyaml", specifier = ">=6.0" },
-    { name = "qdrant-client", marker = "extra == 'qdrant'", specifier = ">=1.11" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.7" },
-    { name = "sentence-transformers", marker = "extra == 'sentence-transformers'", specifier = ">=3.0" },
-    { name = "typer", specifier = ">=0.13" },
-    { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0" },
-    { name = "uvicorn", marker = "extra == 'api'", specifier = ">=0.30" },
-]
-provides-extras = ["anthropic", "openai", "ollama", "chroma", "pgvector", "qdrant", "sentence-transformers", "pdf", "ocr", "api", "docs", "dev"]
 
 [[package]]
 name = "referencing"

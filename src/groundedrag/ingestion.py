@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from rag_gate.loaders.text import load_text
-from rag_gate.schemas import Chunk, Document
+from groundedrag.loaders.text import load_text
+from groundedrag.schemas import Chunk, Document
 
 _LOADERS_BY_SUFFIX = {".txt": load_text, ".md": load_text}
 
@@ -33,7 +33,7 @@ def load_directory(path: str | Path) -> tuple[list[Document], list[Chunk]]:
             continue
         suffix = file_path.suffix.lower()
         if suffix == ".pdf":
-            from rag_gate.loaders.pdf import load_pdf
+            from groundedrag.loaders.pdf import load_pdf
 
             document, file_chunks = load_pdf(file_path)
         elif suffix in _LOADERS_BY_SUFFIX:

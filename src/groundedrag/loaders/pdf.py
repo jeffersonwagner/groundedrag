@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from rag_gate.chunking import chunk_text
-from rag_gate.loaders.ocr import ocr_image
-from rag_gate.schemas import Chunk, Document
+from groundedrag.chunking import chunk_text
+from groundedrag.loaders.ocr import ocr_image
+from groundedrag.schemas import Chunk, Document
 
 DEFAULT_MIN_NATIVE_CHARS = 20
 
@@ -33,7 +33,7 @@ def load_pdf(
         import pypdf
     except ImportError as exc:
         raise ImportError(
-            "load_pdf requires the 'pypdf' package. Install it with: pip install rag-gate[pdf]"
+            "load_pdf requires the 'pypdf' package. Install it with: pip install groundedrag[pdf]"
         ) from exc
 
     file_path = Path(path)
@@ -69,7 +69,7 @@ def _ocr_page(path: Path, page_number: int, *, lang: str) -> str:
     except ImportError as exc:
         raise ImportError(
             "OCR fallback requires the 'pdf2image' package and the Poppler "
-            "binaries. Install the package with: pip install rag-gate[ocr]"
+            "binaries. Install the package with: pip install groundedrag[ocr]"
         ) from exc
     images = convert_from_path(str(path), first_page=page_number, last_page=page_number)
     if not images:

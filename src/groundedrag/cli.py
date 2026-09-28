@@ -1,7 +1,7 @@
-"""rag-gate command-line interface.
+"""groundedrag command-line interface.
 
 Defaults favor a zero-setup first run: the ``hashing`` embedder and the
-``chroma`` store (persisted under ``.rag-gate/chroma`` by default) need no
+``chroma`` store (persisted under ``.groundedrag/chroma`` by default) need no
 API key, no GPU, and no external service. Pass ``--embedder openai`` or
 ``--embedder sentence-transformers`` once you care about real retrieval
 quality — see docs/quickstart.md.
@@ -13,9 +13,9 @@ from pathlib import Path
 
 import typer
 
-from rag_gate import __version__
-from rag_gate.coverage import CoverageError, CoverageMap
-from rag_gate.factories import (
+from groundedrag import __version__
+from groundedrag.coverage import CoverageError, CoverageMap
+from groundedrag.factories import (
     EMBEDDER_CHOICES,
     PROVIDER_CHOICES,
     STORE_CHOICES,
@@ -23,33 +23,33 @@ from rag_gate.factories import (
     build_provider,
     build_store,
 )
-from rag_gate.gate import DocumentGate
-from rag_gate.guardrails import build_answer
-from rag_gate.ingestion import load_directory
-from rag_gate.prompting import build_prompt
-from rag_gate.retriever import GatedRetriever
+from groundedrag.gate import DocumentGate
+from groundedrag.guardrails import build_answer
+from groundedrag.ingestion import load_directory
+from groundedrag.prompting import build_prompt
+from groundedrag.retriever import GatedRetriever
 
 app = typer.Typer(help="A hard documentary gate and citation verifier for RAG pipelines.")
 
 DEFAULT_COVERAGE = "coverage.yaml"
-DEFAULT_PERSIST_DIR = ".rag-gate/chroma"
+DEFAULT_PERSIST_DIR = ".groundedrag/chroma"
 
 
 @app.command()
 def version() -> None:
-    """Print the installed rag-gate version."""
+    """Print the installed groundedrag version."""
     typer.echo(__version__)
 
 
 @app.command()
 def doctor() -> None:
-    """Check that rag-gate is installed correctly."""
-    typer.echo(f"rag-gate {__version__} — core package importable.")
+    """Check that groundedrag is installed correctly."""
+    typer.echo(f"groundedrag {__version__} — core package importable.")
 
 
 @app.command()
 def init(directory: str = typer.Argument(".", help="Where to scaffold the project.")) -> None:
-    """Scaffold a new rag-gate project: an empty coverage map and a
+    """Scaffold a new groundedrag project: an empty coverage map and a
     documents folder to ingest from."""
     root = Path(directory)
     documents_dir = root / "documents"
@@ -63,8 +63,8 @@ def init(directory: str = typer.Argument(".", help="Where to scaffold the projec
         typer.echo(f"Created {coverage_path}")
     typer.echo(f"Created {documents_dir}/ — put your .txt, .md, or .pdf files here.")
     typer.echo(
-        "\nNext: rag-gate ingest documents --topic <topic-name>\n"
-        "Then: rag-gate ask \"your question\" --topic <topic-name>"
+        "\nNext: groundedrag ingest documents --topic <topic-name>\n"
+        "Then: groundedrag ask \"your question\" --topic <topic-name>"
     )
 
 

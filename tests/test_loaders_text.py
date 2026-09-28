@@ -1,6 +1,6 @@
 """Tests for the plain-text/Markdown loader."""
 
-from rag_gate.loaders.text import load_text
+from groundedrag.loaders.text import load_text
 
 
 def test_load_text_produces_document_and_chunks(tmp_path):

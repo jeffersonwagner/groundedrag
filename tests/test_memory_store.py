@@ -2,8 +2,8 @@
 
 import pytest
 
-from rag_gate.schemas import Chunk
-from rag_gate.stores.memory import InMemoryStore
+from groundedrag.schemas import Chunk
+from groundedrag.stores.memory import InMemoryStore
 
 
 def _chunk(chunk_id: str, document_id: str, text: str = "") -> Chunk:

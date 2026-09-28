@@ -6,7 +6,7 @@ Run with (from the repository root, after `uv sync`):
     uv run python examples/compliance_qa/demo.py
 
 No API key needed — this demo runs entirely offline with the dependency-
-free `HashingEmbedder` and shows rag-gate's two core guarantees:
+free `HashingEmbedder` and shows groundedrag's two core guarantees:
 
 1. A documented question retrieves real chunks from the indexed policy.
 2. An undocumented question is refused *before* any LLM would be called —
@@ -22,14 +22,14 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from rag_gate.coverage import CoverageMap
-from rag_gate.embeddings.hashing import HashingEmbedder
-from rag_gate.gate import DocumentGate
-from rag_gate.guardrails import build_answer
-from rag_gate.ingestion import load_directory
-from rag_gate.prompting import build_prompt
-from rag_gate.retriever import GatedRetriever
-from rag_gate.stores.memory import InMemoryStore
+from groundedrag.coverage import CoverageMap
+from groundedrag.embeddings.hashing import HashingEmbedder
+from groundedrag.gate import DocumentGate
+from groundedrag.guardrails import build_answer
+from groundedrag.ingestion import load_directory
+from groundedrag.prompting import build_prompt
+from groundedrag.retriever import GatedRetriever
+from groundedrag.stores.memory import InMemoryStore
 
 DOCUMENTS_DIR = Path(__file__).parent / "documents"
 
@@ -54,7 +54,7 @@ def _generate_cited_answer(retriever: GatedRetriever, topic: str, question: str)
         print(prompt)
         return
 
-    from rag_gate.providers.anthropic import AnthropicProvider
+    from groundedrag.providers.anthropic import AnthropicProvider
 
     raw_answer = AnthropicProvider().generate(prompt)
     answer = build_answer(raw_answer, [chunk.id for chunk in chunks])

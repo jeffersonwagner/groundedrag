@@ -2,18 +2,22 @@
 
 from __future__ import annotations
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 
 class ChromaStore:
     """Persists chunks and vectors in a local, embedded Chroma collection.
 
-    Chroma is given pre-computed vectors (rag-gate always owns embedding
-    via an :class:`~rag_gate.embeddings.base.Embedder`), so no embedding
+    Chroma is given pre-computed vectors (groundedrag always owns embedding
+    via an :class:`~groundedrag.embeddings.base.Embedder`), so no embedding
     function is configured on the collection itself.
     """
 
-    def __init__(self, collection_name: str = "rag_gate", persist_dir: str | None = None) -> None:
+    def __init__(
+        self,
+        collection_name: str = "groundedrag",
+        persist_dir: str | None = None,
+    ) -> None:
         self.collection_name = collection_name
         self.persist_dir = persist_dir
         self._collection = None
@@ -25,7 +29,7 @@ class ChromaStore:
             except ImportError as exc:
                 raise ImportError(
                     "ChromaStore requires the 'chromadb' package. "
-                    "Install it with: pip install rag-gate[chroma]"
+                    "Install it with: pip install groundedrag[chroma]"
                 ) from exc
             client = (
                 chromadb.PersistentClient(path=self.persist_dir)

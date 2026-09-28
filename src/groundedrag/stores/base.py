@@ -1,6 +1,6 @@
 """The VectorStore interface every retrieval backend implements.
 
-See docs/adr/0001-domain-agnostic-core.md — rag-gate's core depends only
+See docs/adr/0001-domain-agnostic-core.md — groundedrag's core depends only
 on this Protocol, never on a specific vector database's client. A
 VectorStore deals in already-computed vectors, not raw text: embedding is
 the caller's (or the retriever's) job via an Embedder, which keeps the
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Protocol
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 
 class VectorStore(Protocol):
-    """Minimal surface rag-gate needs from any vector backend."""
+    """Minimal surface groundedrag needs from any vector backend."""
 
     def add(self, chunks: list[Chunk], vectors: list[list[float]]) -> None:
         """Index ``chunks`` with their corresponding pre-computed ``vectors``."""

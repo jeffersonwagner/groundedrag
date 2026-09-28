@@ -2,7 +2,7 @@
 
 ## Context
 
-The two ideas behind `rag-gate` — a hard documentary gate before calling the
+The two ideas behind `groundedrag` — a hard documentary gate before calling the
 LLM, and citation verification after generation — are easy to build in a way
 that quietly couples them to one vertical: the coverage map keyed by a
 domain-specific taxonomy, chunk metadata shaped around one kind of document,

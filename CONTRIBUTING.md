@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in `rag-gate`. The core, CLI, and two runnable
+Thanks for your interest in `groundedrag`. The core, CLI, and two runnable
 examples (Phases 0-2) are implemented and tested — see
 [`docs/architecture.md`](docs/architecture.md) for what's done and what's
 next. Packaging and launch (Phases 3-4) are still ahead, so the project
@@ -26,7 +26,7 @@ Good places to help right now:
 uv sync --extra dev --extra anthropic --extra openai --extra ollama --extra chroma --extra pdf
 uv run pytest
 uv run ruff check .
-uv run mypy src/rag_gate
+uv run mypy src/groundedrag
 ```
 
 ## Adding a new provider / store / embedder

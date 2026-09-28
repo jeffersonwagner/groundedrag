@@ -1,7 +1,7 @@
 # Example: internal IT helpdesk bot
 
 Two tiny policy documents (`documents/`) and a self-contained script
-showing rag-gate's two core guarantees end to end — no API key or vector
+showing groundedrag's two core guarantees end to end — no API key or vector
 database required.
 
 ```bash

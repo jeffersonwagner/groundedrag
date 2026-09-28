@@ -1,8 +1,8 @@
 """ChromaStore is tested against a real, ephemeral (in-process) Chroma
 collection — no server, no persistence to disk, so it's safe to run in CI."""
 
-from rag_gate.schemas import Chunk
-from rag_gate.stores.chroma import ChromaStore
+from groundedrag.schemas import Chunk
+from groundedrag.stores.chroma import ChromaStore
 
 
 def test_add_and_query_roundtrip():

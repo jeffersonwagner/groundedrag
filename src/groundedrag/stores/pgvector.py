@@ -8,11 +8,11 @@ integration test are welcome.
 
 from __future__ import annotations
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 
 class PgVectorStore:
-    def __init__(self, dsn: str, table: str = "rag_gate_chunks") -> None:
+    def __init__(self, dsn: str, table: str = "groundedrag_chunks") -> None:
         self.dsn = dsn
         self.table = table
 

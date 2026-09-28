@@ -1,4 +1,4 @@
-# rag-gate
+# groundedrag
 
 **A hard gate that stops your RAG from answering without evidence.**
 
@@ -7,7 +7,7 @@
 > Status: early development (Phase 3 — packaging). Not yet published on PyPI —
 > see [`docs/RELEASING.md`](docs/RELEASING.md) for what's left.
 
-[Docs site](https://jeffersonwagner.github.io/rag-gate/) ·
+[Docs site](https://jeffersonwagner.github.io/groundedrag/) ·
 [Benchmark](docs/benchmark.md) ·
 [Changelog](CHANGELOG.md)
 
@@ -19,12 +19,12 @@ information — confidently. In domains where a wrong answer has a real cost
 (compliance, internal support, technical documentation, safety procedures),
 that is not a UX bug, it is a liability.
 
-## What rag-gate does
+## What groundedrag does
 
-`rag-gate` is a small, opinionated Python library that adds two things on top
+`groundedrag` is a small, opinionated Python library that adds two things on top
 of whatever retrieval stack you already have:
 
-1. **Documentary gate.** Before the LLM is ever called, `rag-gate` checks
+1. **Documentary gate.** Before the LLM is ever called, `groundedrag` checks
    whether there is real coverage for the topic of the question, using an
    auditable `topic → documents` map that a non-engineer can read and edit.
    No coverage → the LLM is never called, and the caller gets an explicit
@@ -36,13 +36,13 @@ of whatever retrieval stack you already have:
    is an instruction, not a guarantee — the verification in code is what
    makes it one.
 
-`rag-gate` does not replace your retrieval stack, your vector database, or
+`groundedrag` does not replace your retrieval stack, your vector database, or
 your LLM provider. It sits in front of the LLM call and after the generation
 step, as a thin, provider-agnostic layer.
 
 ## Why not just use LangChain / LlamaIndex / Guardrails AI?
 
-Those are large, general-purpose frameworks. `rag-gate` is deliberately
+Those are large, general-purpose frameworks. `groundedrag` is deliberately
 narrow: it does two things — the gate and the citation check — and is meant
 to drop into a stack you already have, including one built on LangChain or
 LlamaIndex, without asking you to adopt a whole new framework.
@@ -64,7 +64,7 @@ uv sync --extra dev --extra chroma
 uv run python examples/helpdesk_bot/demo.py
 ```
 
-This shows rag-gate's two core guarantees with sample documents bundled
+This shows groundedrag's two core guarantees with sample documents bundled
 in the repo: a documented question retrieves real chunks, and an
 undocumented one is refused *before* any LLM would be called. See
 [`examples/`](examples) for both runnable examples.
@@ -72,29 +72,29 @@ undocumented one is refused *before* any LLM would be called. See
 ### CLI
 
 ```bash
-rag-gate init my-project && cd my-project
+groundedrag init my-project && cd my-project
 # put a few .txt/.md/.pdf files in documents/, then:
-rag-gate ingest documents --topic hr-policy
-rag-gate ask "how many remote days are allowed?" --topic hr-policy
+groundedrag ingest documents --topic hr-policy
+groundedrag ask "how many remote days are allowed?" --topic hr-policy
 ```
 
 By default `ingest`/`ask` use the dependency-free `HashingEmbedder` (no API
 key, but lower retrieval quality — see `docs/adr/0003`) and a local Chroma
-store persisted under `.rag-gate/chroma`. Pass `--embedder openai` (with
+store persisted under `.groundedrag/chroma`. Pass `--embedder openai` (with
 `OPENAI_API_KEY` set) for real retrieval quality, and `--provider
 anthropic|openai|ollama` to pick the LLM that generates the final answer.
 
 ### As a library
 
 ```python
-from rag_gate.coverage import CoverageMap
-from rag_gate.gate import DocumentGate
-from rag_gate.retriever import GatedRetriever
-from rag_gate.guardrails import build_answer
-from rag_gate.prompting import build_prompt
-from rag_gate.stores.memory import InMemoryStore
-from rag_gate.embeddings.openai import OpenAIEmbedder
-from rag_gate.providers.anthropic import AnthropicProvider
+from groundedrag.coverage import CoverageMap
+from groundedrag.gate import DocumentGate
+from groundedrag.retriever import GatedRetriever
+from groundedrag.guardrails import build_answer
+from groundedrag.prompting import build_prompt
+from groundedrag.stores.memory import InMemoryStore
+from groundedrag.embeddings.openai import OpenAIEmbedder
+from groundedrag.providers.anthropic import AnthropicProvider
 
 gate = DocumentGate(CoverageMap.from_file("coverage.yaml"))
 retriever = GatedRetriever(gate, InMemoryStore(), OpenAIEmbedder())
@@ -116,7 +116,7 @@ uv run python scripts/benchmark.py
 
 On out-of-scope questions (no matching documentation), a pipeline with no
 gate answers 100% of the time — it has no way to know it shouldn't.
-`rag-gate` refuses 100% of the time, and `tests/test_benchmark.py` holds
+`groundedrag` refuses 100% of the time, and `tests/test_benchmark.py` holds
 that number as a regression check, not just a demo. See
 [`docs/benchmark.md`](docs/benchmark.md) for methodology and
 [ADR-0005](docs/adr/0005-hallucination-benchmark-methodology.md) for why
@@ -125,7 +125,7 @@ it's scoped this way.
 ## Project layout
 
 ```
-src/rag_gate/
+src/groundedrag/
 ├── gate.py            # decides: call the LLM, or refuse with a reason
 ├── coverage.py         # topic → documents map, auditable (YAML/JSON)
 ├── retriever.py        # retrieval + gate integration
@@ -135,7 +135,7 @@ src/rag_gate/
 ├── ingestion.py          # walks a directory into (Document, Chunk) pairs
 ├── factories.py          # name -> instance wiring for the CLI's flags
 ├── schemas.py          # Pydantic contracts
-├── cli.py               # rag-gate init / ingest / ask / doctor
+├── cli.py               # groundedrag init / ingest / ask / doctor
 ├── providers/           # LLM providers: anthropic, openai, ollama
 ├── stores/              # vector stores: chroma, pgvector, memory
 ├── embeddings/           # embedding backends, incl. the zero-setup HashingEmbedder
@@ -158,7 +158,7 @@ Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 uv sync --extra dev --extra anthropic --extra openai --extra ollama --extra chroma --extra pdf
 uv run pytest
 uv run ruff check .
-uv run mypy src/rag_gate
+uv run mypy src/groundedrag
 ```
 
 To build the docs site locally: `uv sync --extra docs && uv run mkdocs serve`.

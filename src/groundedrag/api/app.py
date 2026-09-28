@@ -1,6 +1,6 @@
 """Optional thin FastAPI wrapper around the core pipeline.
 
-Not required to use rag-gate as a library — this is a convenience for
+Not required to use groundedrag as a library — this is a convenience for
 callers who want an HTTP endpoint. Requires the ``api`` extra. Lands in
 Phase 2.
 """

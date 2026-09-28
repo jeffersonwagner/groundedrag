@@ -1,10 +1,10 @@
-# rag-gate
+# groundedrag
 
 **A hard gate that stops your RAG from answering without evidence.**
 
 Most RAG pipelines always call the LLM, even when retrieval finds nothing
 relevant — the model fills the gap with invented information,
-confidently. `rag-gate` is a small, opinionated Python library that adds
+confidently. `groundedrag` is a small, opinionated Python library that adds
 two things on top of whatever retrieval stack you already have:
 
 1. **Documentary gate** — before the LLM is ever called, checks whether
@@ -15,7 +15,7 @@ two things on top of whatever retrieval stack you already have:
    verifier runs after generation and checks each citation against what
    was actually retrieved.
 
-See the [GitHub repository](https://github.com/jeffersonwagner/rag-gate)
+See the [GitHub repository](https://github.com/jeffersonwagner/groundedrag)
 for the full pitch, installation, and source. This site holds the deeper
 technical documentation:
 

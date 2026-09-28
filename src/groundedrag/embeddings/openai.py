@@ -16,7 +16,7 @@ class OpenAIEmbedder:
             except ImportError as exc:
                 raise ImportError(
                     "OpenAIEmbedder requires the 'openai' package. "
-                    "Install it with: pip install rag-gate[openai]"
+                    "Install it with: pip install groundedrag[openai]"
                 ) from exc
             self._client = openai.OpenAI(api_key=self.api_key)
         return self._client

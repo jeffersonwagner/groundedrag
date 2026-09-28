@@ -16,6 +16,6 @@ def ocr_image(image: Any, *, lang: str = "eng") -> str:
     except ImportError as exc:
         raise ImportError(
             "OCR requires the 'pytesseract' package and the Tesseract binary. "
-            "Install the package with: pip install rag-gate[ocr]"
+            "Install the package with: pip install groundedrag[ocr]"
         ) from exc
     return pytesseract.image_to_string(image, lang=lang)

@@ -1,14 +1,14 @@
 """Provider tests mock the vendor SDK client, so they run offline and never
-hit a real API — they check that rag-gate builds the right request and
+hit a real API — they check that groundedrag builds the right request and
 parses the response correctly, not that the vendor's API works."""
 
 from types import SimpleNamespace
 
 import pytest
 
-from rag_gate.providers.anthropic import AnthropicProvider
-from rag_gate.providers.ollama import OllamaProvider
-from rag_gate.providers.openai import OpenAIProvider
+from groundedrag.providers.anthropic import AnthropicProvider
+from groundedrag.providers.ollama import OllamaProvider
+from groundedrag.providers.openai import OpenAIProvider
 
 
 def test_anthropic_provider_generate(monkeypatch):
@@ -41,7 +41,7 @@ def test_anthropic_provider_generate(monkeypatch):
 def test_anthropic_provider_missing_dependency(monkeypatch):
     monkeypatch.setitem(__import__("sys").modules, "anthropic", None)
     provider = AnthropicProvider()
-    with pytest.raises(ImportError, match="rag-gate\\[anthropic\\]"):
+    with pytest.raises(ImportError, match="groundedrag\\[anthropic\\]"):
         provider.generate("hi")
 
 

@@ -9,15 +9,15 @@ do them on your behalf.
 ## One-time setup (before the first release)
 
 1. Log in at [pypi.org](https://pypi.org) and go to
-   **Your projects → Publishing** (or, if the `rag-gate` project doesn't
+   **Your projects → Publishing** (or, if the `groundedrag` project doesn't
    exist yet, use PyPI's
    [pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/)
    flow, which lets you register a trusted publisher for a project name
    before it has a first release).
 2. Add a trusted publisher with:
-   - **PyPI project name:** `rag-gate`
+   - **PyPI project name:** `groundedrag`
    - **Owner:** `jeffersonwagner`
-   - **Repository name:** `rag-gate`
+   - **Repository name:** `groundedrag`
    - **Workflow filename:** `release.yml`
    - **Environment name:** `pypi`
 
@@ -27,7 +27,7 @@ That environment name must match the `environment: name: pypi` in
 ## Cutting a release
 
 1. Update `version` in `pyproject.toml` and `__version__` in
-   `src/rag_gate/__init__.py` (keep them in sync — nothing currently
+   `src/groundedrag/__init__.py` (keep them in sync — nothing currently
    enforces that automatically).
 2. Move the `[Unreleased]` section of `CHANGELOG.md` under a new
    `## [X.Y.Z] - YYYY-MM-DD` heading.

@@ -18,7 +18,7 @@ class AnthropicProvider:
             except ImportError as exc:
                 raise ImportError(
                     "AnthropicProvider requires the 'anthropic' package. "
-                    "Install it with: pip install rag-gate[anthropic]"
+                    "Install it with: pip install groundedrag[anthropic]"
                 ) from exc
             self._client = anthropic.Anthropic(api_key=self.api_key)
         return self._client

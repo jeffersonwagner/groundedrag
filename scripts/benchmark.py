@@ -13,7 +13,7 @@ anyway, instead of refusing?
     naive pipeline   (no gate): always retrieves the closest chunk it has
                                  and always calls the LLM from it, however
                                  unrelated that chunk actually is
-    rag-gate pipeline (gated): refuses before ever calling the LLM when
+    groundedrag pipeline (gated): refuses before ever calling the LLM when
                                  coverage is missing
 
 Set ANTHROPIC_API_KEY to also see one live example of what the naive
@@ -25,13 +25,13 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from rag_gate.coverage import CoverageMap
-from rag_gate.embeddings.hashing import HashingEmbedder
-from rag_gate.gate import DocumentGate
-from rag_gate.prompting import build_prompt
-from rag_gate.retriever import GatedRetriever
-from rag_gate.schemas import Chunk
-from rag_gate.stores.memory import InMemoryStore
+from groundedrag.coverage import CoverageMap
+from groundedrag.embeddings.hashing import HashingEmbedder
+from groundedrag.gate import DocumentGate
+from groundedrag.prompting import build_prompt
+from groundedrag.retriever import GatedRetriever
+from groundedrag.schemas import Chunk
+from groundedrag.stores.memory import InMemoryStore
 
 DOCUMENTED_TOPIC = "remote-work"
 DOCUMENTED_DOCUMENT_ID = "remote_work_policy"
@@ -104,16 +104,16 @@ def _print_report(results: list[Result]) -> None:
     for r in results:
         print(f"Q: {r.question}")
         print(f'  naive pipeline would answer from: "{r.naive_chunk_text[:70]}..."')
-        print(f"  rag-gate: {'answers (bug!)' if r.gated_answered else 'refuses'}")
+        print(f"  groundedrag: {'answers (bug!)' if r.gated_answered else 'refuses'}")
         print()
 
     print(f"Naive pipeline answer rate on out-of-scope questions: {naive_rate:.0%}")
-    print(f"rag-gate answer rate on out-of-scope questions:       {gated_rate:.0%}")
+    print(f"groundedrag answer rate on out-of-scope questions:       {gated_rate:.0%}")
     print()
     print(
         "A pipeline with no gate has no way to know a question falls outside "
         "its documentation — it retrieves the closest chunk it has and "
-        "generates from it regardless of relevance. rag-gate's coverage "
+        "generates from it regardless of relevance. groundedrag's coverage "
         "check happens before that call, so the LLM never gets the chance "
         "to fabricate an answer to fill the gap."
     )
@@ -129,7 +129,7 @@ def _print_live_example() -> None:
         )
         return
 
-    from rag_gate.providers.anthropic import AnthropicProvider
+    from groundedrag.providers.anthropic import AnthropicProvider
 
     question = OUT_OF_SCOPE_QUESTIONS[0]
     unrelated_chunk = Chunk(

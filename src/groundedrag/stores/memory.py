@@ -1,6 +1,6 @@
 """In-memory VectorStore — exact cosine similarity, no external dependency.
 
-Reference implementation for tests and for trying rag-gate without a real
+Reference implementation for tests and for trying groundedrag without a real
 vector database. Pure Python, no numpy: this store is meant to be small
 and always installable, not fast at scale.
 """
@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import math
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 
 def _cosine_similarity(a: list[float], b: list[float]) -> float:

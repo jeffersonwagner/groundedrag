@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 
-from rag_gate.schemas import Answer, Citation
+from groundedrag.schemas import Answer, Citation
 
 _CITATION_RE = re.compile(r"\[(\d+)]")
 

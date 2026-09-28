@@ -1,6 +1,6 @@
 """Wires an Embedder and a VectorStore to the DocumentGate.
 
-This is the one place in rag-gate's core that talks to both the gate and
+This is the one place in groundedrag's core that talks to both the gate and
 the storage layer — everything upstream (callers) only sees `retrieve()`,
 and everything downstream (providers, stores, embedders) only sees the
 Protocol it implements.
@@ -8,10 +8,10 @@ Protocol it implements.
 
 from __future__ import annotations
 
-from rag_gate.embeddings.base import Embedder
-from rag_gate.gate import DocumentGate
-from rag_gate.schemas import Chunk, GateDecision
-from rag_gate.stores.base import VectorStore
+from groundedrag.embeddings.base import Embedder
+from groundedrag.gate import DocumentGate
+from groundedrag.schemas import Chunk, GateDecision
+from groundedrag.stores.base import VectorStore
 
 
 class GatedRetriever:

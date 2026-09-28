@@ -2,7 +2,7 @@
 
 import pytest
 
-from rag_gate.chunking import chunk_text
+from groundedrag.chunking import chunk_text
 
 
 def test_short_text_is_a_single_chunk():

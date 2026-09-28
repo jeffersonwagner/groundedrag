@@ -6,7 +6,7 @@ provider code, and so it's easy to unit test on its own.
 
 from __future__ import annotations
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 _INSTRUCTIONS = (
     "Answer the question using ONLY the numbered context below. "
@@ -20,7 +20,7 @@ def build_prompt(question: str, chunks: list[Chunk]) -> str:
     """Build a citation-required prompt from the retrieved ``chunks``.
 
     Chunks are numbered in retrieval order, 1-indexed — this numbering is
-    exactly what ``rag_gate.guardrails.build_answer`` expects when it later
+    exactly what ``groundedrag.guardrails.build_answer`` expects when it later
     checks each ``[n]`` citation against ``chunks[n - 1]``.
     """
     context = "\n\n".join(f"[{i}] {chunk.text}" for i, chunk in enumerate(chunks, start=1))

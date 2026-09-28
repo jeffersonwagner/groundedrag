@@ -11,7 +11,7 @@ installed SDK's actual signature, which no longer exposes `temperature` as
 a typed parameter (its generation controls have moved toward an
 `output_config` object with an `effort` field instead). This was caught by
 manually running the CLI end to end, not by the mocked provider unit
-tests — mocking the SDK client verifies rag-gate builds the *call it
+tests — mocking the SDK client verifies groundedrag builds the *call it
 intends to make* correctly, not that the real SDK still accepts that call.
 
 ## Decision
@@ -29,7 +29,7 @@ call now returns `AuthenticationError`, not `TypeError`.
   change again — there is no way to detect that ahead of time other than
   the API's own error message.
 - This is a reminder that mocked SDK tests (`tests/test_providers.py`)
-  verify rag-gate's request-building logic, not the vendor SDK's current
+  verify groundedrag's request-building logic, not the vendor SDK's current
   contract. A lightweight, opt-in "real API" smoke test (skipped unless an
   API key is present in the environment) would catch this class of drift
   automatically instead of relying on someone noticing during manual use —

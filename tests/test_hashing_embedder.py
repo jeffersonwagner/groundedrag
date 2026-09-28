@@ -2,7 +2,7 @@
 
 import math
 
-from rag_gate.embeddings.hashing import HashingEmbedder
+from groundedrag.embeddings.hashing import HashingEmbedder
 
 
 def test_same_text_yields_same_vector():

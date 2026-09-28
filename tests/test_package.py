@@ -6,8 +6,8 @@ from pathlib import Path
 
 from typer.testing import CliRunner
 
-from rag_gate import __version__
-from rag_gate.cli import app
+from groundedrag import __version__
+from groundedrag.cli import app
 
 runner = CliRunner()
 

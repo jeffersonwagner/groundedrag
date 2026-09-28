@@ -2,7 +2,7 @@
 
 ## 1. Scope
 
-`rag-gate` adds two things to a RAG pipeline: a **documentary gate** that
+`groundedrag` adds two things to a RAG pipeline: a **documentary gate** that
 decides whether the LLM should be called at all, and a **citation
 verifier** that checks the LLM's answer after the fact. It does not
 implement retrieval, chunking, or an LLM itself — those are provided by
@@ -50,7 +50,7 @@ missing          ▼
 | Chunking | `chunking.py` | splits text into overlapping, whitespace-safe chunks | done |
 
 `LLMProvider`, `VectorStore`, and `Embedder` are `Protocol`-based (see
-`docs/adr/0002`): `rag-gate`'s core never imports a specific vendor SDK
+`docs/adr/0002`): `groundedrag`'s core never imports a specific vendor SDK
 directly — every provider/store/embedder implementation imports its SDK
 lazily and raises a clear `ImportError` naming the extra to install when
 it's missing, so swapping Chroma for pgvector or Ollama for Anthropic never
@@ -79,7 +79,7 @@ touches `gate.py`, `retriever.py`, or `guardrails.py`.
 
 ## 5. Roadmap
 
-See the repository's [issues](https://github.com/jeffersonwagner/rag-gate/issues)
+See the repository's [issues](https://github.com/jeffersonwagner/groundedrag/issues)
 and [the ADRs](adr/0001-domain-agnostic-core.md) for in-progress design
 decisions. At a high level:
 

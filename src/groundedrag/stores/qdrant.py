@@ -7,13 +7,13 @@ with a docker-compose-based integration test are welcome.
 
 from __future__ import annotations
 
-from rag_gate.schemas import Chunk
+from groundedrag.schemas import Chunk
 
 
 class QdrantStore:
     def __init__(
         self,
-        collection_name: str = "rag_gate",
+        collection_name: str = "groundedrag",
         url: str = "http://localhost:6333",
     ) -> None:
         self.collection_name = collection_name

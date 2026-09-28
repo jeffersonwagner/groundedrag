@@ -24,7 +24,7 @@ site/
 
 # Vector store / model artifacts a user might generate while trying examples
 .chroma/
-.rag-gate/
+.groundedrag/
 *.gguf
 
 # Editors / OS

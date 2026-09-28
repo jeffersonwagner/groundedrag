@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from rag_gate.chunking import chunk_text
-from rag_gate.schemas import Chunk, Document
+from groundedrag.chunking import chunk_text
+from groundedrag.schemas import Chunk, Document
 
 
 def load_text(

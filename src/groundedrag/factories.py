@@ -6,9 +6,9 @@ imported and tested without going through Typer.
 
 from __future__ import annotations
 
-from rag_gate.embeddings.base import Embedder
-from rag_gate.providers.base import LLMProvider
-from rag_gate.stores.base import VectorStore
+from groundedrag.embeddings.base import Embedder
+from groundedrag.providers.base import LLMProvider
+from groundedrag.stores.base import VectorStore
 
 EMBEDDER_CHOICES = ("hashing", "openai", "sentence-transformers")
 PROVIDER_CHOICES = ("anthropic", "openai", "ollama")
@@ -17,15 +17,15 @@ STORE_CHOICES = ("chroma", "memory")
 
 def build_embedder(name: str) -> Embedder:
     if name == "hashing":
-        from rag_gate.embeddings.hashing import HashingEmbedder
+        from groundedrag.embeddings.hashing import HashingEmbedder
 
         return HashingEmbedder()
     if name == "openai":
-        from rag_gate.embeddings.openai import OpenAIEmbedder
+        from groundedrag.embeddings.openai import OpenAIEmbedder
 
         return OpenAIEmbedder()
     if name == "sentence-transformers":
-        from rag_gate.embeddings.sentence_transformers import SentenceTransformersEmbedder
+        from groundedrag.embeddings.sentence_transformers import SentenceTransformersEmbedder
 
         return SentenceTransformersEmbedder()
     raise ValueError(f"Unknown embedder '{name}'. Choose one of: {', '.join(EMBEDDER_CHOICES)}")
@@ -33,15 +33,15 @@ def build_embedder(name: str) -> Embedder:
 
 def build_provider(name: str, model: str | None) -> LLMProvider:
     if name == "anthropic":
-        from rag_gate.providers.anthropic import AnthropicProvider
+        from groundedrag.providers.anthropic import AnthropicProvider
 
         return AnthropicProvider(model=model) if model else AnthropicProvider()
     if name == "openai":
-        from rag_gate.providers.openai import OpenAIProvider
+        from groundedrag.providers.openai import OpenAIProvider
 
         return OpenAIProvider(model=model) if model else OpenAIProvider()
     if name == "ollama":
-        from rag_gate.providers.ollama import OllamaProvider
+        from groundedrag.providers.ollama import OllamaProvider
 
         return OllamaProvider(model=model) if model else OllamaProvider()
     raise ValueError(f"Unknown provider '{name}'. Choose one of: {', '.join(PROVIDER_CHOICES)}")
@@ -49,11 +49,11 @@ def build_provider(name: str, model: str | None) -> LLMProvider:
 
 def build_store(name: str, persist_dir: str | None) -> VectorStore:
     if name == "chroma":
-        from rag_gate.stores.chroma import ChromaStore
+        from groundedrag.stores.chroma import ChromaStore
 
         return ChromaStore(persist_dir=persist_dir)
     if name == "memory":
-        from rag_gate.stores.memory import InMemoryStore
+        from groundedrag.stores.memory import InMemoryStore
 
         return InMemoryStore()
     raise ValueError(f"Unknown store '{name}'. Choose one of: {', '.join(STORE_CHOICES)}")

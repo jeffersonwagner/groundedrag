@@ -1,4 +1,4 @@
-"""Core data contracts shared by every layer of rag-gate.
+"""Core data contracts shared by every layer of groundedrag.
 
 These types are intentionally domain-agnostic (see docs/adr/0001). Nothing
 here should end up knowing what a "topic" means in any particular caller's

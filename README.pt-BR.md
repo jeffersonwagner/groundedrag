@@ -1,4 +1,4 @@
-# rag-gate
+# groundedrag
 
 **Uma trava que impede seu RAG de responder sem evidência.**
 
@@ -13,7 +13,7 @@
 > publicado no PyPI — falta apenas configurar o "trusted publisher" no
 > lado do PyPI (veja [`docs/RELEASING.md`](docs/RELEASING.md), em inglês).
 
-[Site de documentação](https://jeffersonwagner.github.io/rag-gate/) ·
+[Site de documentação](https://jeffersonwagner.github.io/groundedrag/) ·
 [Benchmark](docs/benchmark.md) · [Changelog](CHANGELOG.md)
 
 ## O problema
@@ -24,12 +24,12 @@ preenche a lacuna com informação inventada — com confiança. Em domínios on
 uma resposta errada tem custo real (compliance, suporte interno, documentação
 técnica, procedimentos de segurança), isso não é um bug de UX, é um passivo.
 
-## O que o rag-gate faz
+## O que o groundedrag faz
 
-`rag-gate` é uma biblioteca Python pequena e opinativa que adiciona duas
+`groundedrag` é uma biblioteca Python pequena e opinativa que adiciona duas
 coisas em cima de qualquer stack de recuperação que você já tenha:
 
-1. **Gate documental.** Antes de o LLM ser chamado, o `rag-gate` verifica se
+1. **Gate documental.** Antes de o LLM ser chamado, o `groundedrag` verifica se
    existe cobertura real para o tópico da pergunta, usando um mapa
    `tópico → documentos` auditável que uma pessoa não-programadora consegue
    ler e editar. Sem cobertura, o LLM nunca é chamado, e quem fez a pergunta
@@ -42,13 +42,13 @@ coisas em cima de qualquer stack de recuperação que você já tenha:
    fontes no prompt é uma instrução, não uma garantia — a verificação em
    código é o que transforma isso em garantia.
 
-O `rag-gate` não substitui sua stack de recuperação, seu banco vetorial ou seu
+O `groundedrag` não substitui sua stack de recuperação, seu banco vetorial ou seu
 provedor de LLM. Ele fica na frente da chamada ao LLM e depois da geração,
 como uma camada fina e agnóstica de provedor.
 
 ## Por que não usar LangChain / LlamaIndex / Guardrails AI?
 
-Esses são frameworks grandes e genéricos. O `rag-gate` é deliberadamente
+Esses são frameworks grandes e genéricos. O `groundedrag` é deliberadamente
 estreito: faz duas coisas — o gate e a verificação de citação — e foi
 pensado para encaixar em uma stack que você já tem, inclusive uma construída
 sobre LangChain ou LlamaIndex, sem exigir que você adote um framework novo.
@@ -67,7 +67,7 @@ uv sync --extra dev --extra chroma
 uv run python examples/helpdesk_bot/demo.py
 ```
 
-Isso mostra as duas garantias centrais do `rag-gate` com documentos de
+Isso mostra as duas garantias centrais do `groundedrag` com documentos de
 exemplo já no repositório: uma pergunta documentada recupera trechos reais,
 e uma pergunta sem documentação é recusada **antes** de qualquer chamada ao
 LLM. Veja [`examples/`](examples) para os dois exemplos rodáveis.
@@ -75,15 +75,15 @@ LLM. Veja [`examples/`](examples) para os dois exemplos rodáveis.
 ### CLI
 
 ```bash
-rag-gate init meu-projeto && cd meu-projeto
+groundedrag init meu-projeto && cd meu-projeto
 # coloque alguns arquivos .txt/.md/.pdf em documents/, depois:
-rag-gate ingest documents --topic politica-rh
-rag-gate ask "quantos dias de trabalho remoto são permitidos?" --topic politica-rh
+groundedrag ingest documents --topic politica-rh
+groundedrag ask "quantos dias de trabalho remoto são permitidos?" --topic politica-rh
 ```
 
 Por padrão, `ingest`/`ask` usam o `HashingEmbedder` (sem dependências, sem
 chave de API, mas com qualidade de recuperação menor — veja `docs/adr/0003`)
-e um Chroma local persistido em `.rag-gate/chroma`. Use `--embedder openai`
+e um Chroma local persistido em `.groundedrag/chroma`. Use `--embedder openai`
 (com `OPENAI_API_KEY` configurada) para qualidade real de recuperação, e
 `--provider anthropic|openai|ollama` para escolher o LLM que gera a
 resposta final.

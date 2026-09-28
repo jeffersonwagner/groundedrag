@@ -6,7 +6,7 @@ Both real embedding backends (Phase 1) have a real cost: `OpenAIEmbedder`
 needs an API key and a network call per chunk; `SentenceTransformersEmbedder`
 needs a multi-gigabyte PyTorch download the first time it runs. Either one
 as the CLI's or the examples' *default* means the first thing a new user
-does — `rag-gate init && rag-gate ingest && rag-gate ask`, or running an
+does — `groundedrag init && groundedrag ingest && groundedrag ask`, or running an
 example script — requires a signup or a long wait before they see anything
 work.
 
@@ -25,7 +25,7 @@ starts.
 
 ## Consequences
 
-- `rag-gate init && rag-gate ingest documents --topic x && rag-gate ask
+- `groundedrag init && groundedrag ingest documents --topic x && groundedrag ask
   "..." --topic x` and both example scripts (`examples/*/demo.py`) run to
   completion with no API key, no GPU, and no network access — the two
   guarantees that matter most for a first impression (the gate refusing an

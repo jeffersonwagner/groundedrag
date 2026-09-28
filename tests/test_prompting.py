@@ -1,7 +1,7 @@
 """Tests for the prompt builder."""
 
-from rag_gate.prompting import build_prompt
-from rag_gate.schemas import Chunk
+from groundedrag.prompting import build_prompt
+from groundedrag.schemas import Chunk
 
 
 def test_prompt_numbers_chunks_from_one():

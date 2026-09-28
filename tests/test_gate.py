@@ -1,8 +1,8 @@
-"""Unit tests for the documentary gate — the core guarantee of rag-gate:
+"""Unit tests for the documentary gate — the core guarantee of groundedrag:
 without coverage, the caller must never proceed to call an LLM."""
 
-from rag_gate.coverage import CoverageMap
-from rag_gate.gate import DocumentGate
+from groundedrag.coverage import CoverageMap
+from groundedrag.gate import DocumentGate
 
 
 def test_allows_documented_topic():

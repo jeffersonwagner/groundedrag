@@ -20,7 +20,7 @@ class SentenceTransformersEmbedder:
             except ImportError as exc:
                 raise ImportError(
                     "SentenceTransformersEmbedder requires the 'sentence-transformers' "
-                    "package. Install it with: pip install rag-gate[sentence-transformers]"
+                    "package. Install it with: pip install groundedrag[sentence-transformers]"
                 ) from exc
             self._model = SentenceTransformer(self.model_name)
         return self._model

@@ -2,7 +2,7 @@
 
 import pytest
 
-from rag_gate.ingestion import load_directory
+from groundedrag.ingestion import load_directory
 
 
 def test_loads_txt_and_md_files(tmp_path):

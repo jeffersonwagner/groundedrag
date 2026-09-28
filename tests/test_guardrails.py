@@ -1,6 +1,6 @@
 """Unit tests for citation extraction and verification."""
 
-from rag_gate.guardrails import build_answer, extract_citations, is_fully_cited
+from groundedrag.guardrails import build_answer, extract_citations, is_fully_cited
 
 
 def test_extracts_valid_citations_in_range():

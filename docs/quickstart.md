@@ -11,16 +11,16 @@ This runs entirely offline (the dependency-free `HashingEmbedder`, no
 network calls) and shows the two guarantees that matter most: a documented
 question retrieves real chunks, and an undocumented one is refused before
 any LLM would be called. See
-[`examples/compliance_qa`](https://github.com/jeffersonwagner/rag-gate/tree/main/examples/compliance_qa)
+[`examples/compliance_qa`](https://github.com/jeffersonwagner/groundedrag/tree/main/examples/compliance_qa)
 for a second, compliance-flavored example.
 
 ## CLI
 
 ```bash
-rag-gate init my-project && cd my-project
+groundedrag init my-project && cd my-project
 # put a few .txt/.md/.pdf files in documents/
-rag-gate ingest documents --topic hr-policy
-rag-gate ask "how many remote days are allowed?" --topic hr-policy
+groundedrag ingest documents --topic hr-policy
+groundedrag ask "how many remote days are allowed?" --topic hr-policy
 ```
 
 `ask` on an undocumented topic prints the refusal reason and exits
@@ -33,7 +33,7 @@ pick the LLM.
 
 ## As a library
 
-See the [README](https://github.com/jeffersonwagner/rag-gate#as-a-library)
+See the [README](https://github.com/jeffersonwagner/groundedrag#as-a-library)
 for the minimal `DocumentGate` + `GatedRetriever` + `build_answer` wiring,
 or read [Architecture](architecture.md) for how the pieces fit together
 and [the ADRs](adr/0001-domain-agnostic-core.md) for why they're built

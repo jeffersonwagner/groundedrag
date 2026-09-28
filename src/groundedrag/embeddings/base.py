@@ -6,7 +6,7 @@ from typing import Protocol
 
 
 class Embedder(Protocol):
-    """Minimal surface rag-gate needs from any embedding backend."""
+    """Minimal surface groundedrag needs from any embedding backend."""
 
     def embed(self, texts: list[str]) -> list[list[float]]:
         """Return one embedding vector per input text, in order."""

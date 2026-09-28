@@ -2,7 +2,7 @@
 
 import pytest
 
-from rag_gate.coverage import CoverageError, CoverageMap
+from groundedrag.coverage import CoverageError, CoverageMap
 
 
 def test_from_file_loads_yaml(tmp_path):

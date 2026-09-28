@@ -1,12 +1,12 @@
 """The documentary gate: decides whether the LLM may be called at all.
 
-This is the core of rag-gate (see docs/adr/0001-domain-agnostic-core.md).
+This is the core of groundedrag (see docs/adr/0001-domain-agnostic-core.md).
 """
 
 from __future__ import annotations
 
-from rag_gate.coverage import CoverageMap
-from rag_gate.schemas import GateDecision
+from groundedrag.coverage import CoverageMap
+from groundedrag.schemas import GateDecision
 
 
 class DocumentGate:
